@@ -1,7 +1,16 @@
 #include<iostream>
 using namespace std;
 int size;
-int insertat(int a[],int pos)//sz is size and pos is position
+/*
+There are total six operations that can be performed on array:
+-Traversion
+-Insertion
+-Deletion
+-Sorting
+-Searching
+-Reading/Display
+*/
+int insertat(int a[],int pos)//pos is position
 {
     size++;
     for (int i = size; i>=pos; i--)
@@ -23,12 +32,60 @@ int deleteat(int a[],int pos)
     size--;
     return 0;
 }
-int sortasc()
+int sort(int a[])
 {
+    char c;
+    cout<<"What type of sort you want to apply? if accending then type 'A' else type 'D' : ";
+    cin>>c;
+    if (c=='a'||c=='A')
+    {
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = i+1; j <size; j++)
+            {
+                if (a[i]>a[j])
+                {
+                    swap(a[i],a[j]);
+                }
+            }
+        }
+    }
+    else if (c=='d'||c=='D')
+    {
+        for (int i = 0; i < size; i++)
+        {
+            for (int j = i+1; j <size; j++)
+            {
+                if (a[i]<a[j])
+                {
+                    swap(a[i],a[j]);
+                }
+            }
+        }
+    }
+    else
+    {
+        cout<<"Invalid Input";
+    }
+    cout<<"Input 'Y' and then input 5 to display sorted array";
     return 0;
 }
-int find(int val)
+int find(int a[],int val)
 {
+    int b; 
+    for (int i = 0; i < size; i++)
+    {
+        if(a[i]==val)
+        {
+            b=i;
+            cout<<a[i]<<" is at "<<b<<" index in array";
+        }
+    }
+    if (b<0||b>size)
+    {
+        cout<<"Value not found";
+    }
+    
     return 0;   
 }
 void display(int a[])
@@ -40,7 +97,7 @@ void display(int a[])
 }
 int main()
 {
-    int array[size],n,p,a=1;
+    int array[size],n,p,a=1,element;//n used in switch case,p is to input position and a is for repeatation of switch case
     cout<<"Enter size of the array : ";
     cin>>size;
     cout<<"Input elements of array :"<<endl;
@@ -64,6 +121,14 @@ int main()
             cout<<"Enter positon to detete in array:";
             cin>>p;
             deleteat(array,p);
+            break;
+            case 3:
+            sort(array);
+            break;
+            case 4:
+            cout<<"Enter the element to be searched in array : ";
+            cin>>element;
+            find(array,element);
             break;
             case 5:
             display(array);
