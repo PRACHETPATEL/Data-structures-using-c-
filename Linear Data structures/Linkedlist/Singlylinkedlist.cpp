@@ -180,7 +180,6 @@ int main()
 {
     node *ptr=NULL;
     linkedlist list;
-   // deletefront(&ptr); 
     list.push_front(&ptr,30);
     list.push_front(&ptr,20);
     list.push_front(&ptr,10);
@@ -189,7 +188,6 @@ int main()
     list.push_before(ptr,70,2);
     list.push_back(&ptr,60);
     list.deleteat(&ptr,2);
-    //cout<<ptr->data;
     //list.deletefront(&ptr);
     //list.deleterear(&ptr);
     list.display(ptr);
