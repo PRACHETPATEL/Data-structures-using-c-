@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 int size,front=-1,rear=-1;
-int enqueue(int a[],int data)//enqueue means insertion in queue form front
+int enqueue(int* a,int data)//enqueue means insertion in queue form front
 {
         if(front==-1)
         {    
@@ -17,7 +17,7 @@ int enqueue(int a[],int data)//enqueue means insertion in queue form front
             a[rear]=data;
         }
 }
-int dequeue(int a[])//dequeue means deletion in queue form front
+int dequeue(int* a)//dequeue means deletion in queue form front
 {
     int value;
     if(front==-1 || front>rear)
@@ -32,7 +32,7 @@ int dequeue(int a[])//dequeue means deletion in queue form front
     }
     return value;
 }
-void display(int a[])
+void display(int* a)
 {
     for (int i = front; i <=rear; i++)
     {
@@ -43,7 +43,7 @@ int main()
 {
     cout<<"Enter maximum size of queue : ";
     cin>>size;
-    int queue[size];
+    int *queue=new int[size];
     int n,a=1,num,element;
     char ch;
     for(int i=0;i<a;i++)
@@ -78,7 +78,7 @@ int main()
             cout<<"wrong input"<<endl;
             break;
         }
-        cout<<"\nDo you want to repeat?if yes type 'Y' else 'N' : ";
+        cout<<"\nDo you want to repeat?if yes type 'Y' else any key : ";
         cin>>ch;
         if(ch=='y'||ch=='Y')
         {
